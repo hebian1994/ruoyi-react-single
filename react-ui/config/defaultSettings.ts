@@ -10,11 +10,11 @@ const Settings: ProLayoutProps & {
   navTheme: 'light',
   // 拂晓蓝
   colorPrimary: '#ec133e',
-  layout: 'side',
+  layout: 'mix',
   contentWidth: 'Fluid',
   siderMenuType: 'sub',
   fixedHeader: false,
-  fixSiderbar: false,
+  fixSiderbar: true,
   splitMenus: true,
   colorWeak: true,
   title: 'RY-React-single',
