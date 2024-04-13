@@ -147,6 +147,35 @@ public class VelocityUtils {
     }
 
     /**
+     * 获取模板信息REACT
+     *
+     * @return 模板列表
+     */
+    public static List<String> getTemplateListReact(String tplCategory) {
+        List<String> templates = new ArrayList<String>();
+        templates.add("vm/java/domain.java.vm");
+        templates.add("vm/java/mapper.java.vm");
+        templates.add("vm/java/service.java.vm");
+        templates.add("vm/java/serviceImpl.java.vm");
+        templates.add("vm/java/controller.java.vm");
+        templates.add("vm/xml/mapper.xml.vm");
+        templates.add("vm/sql/sql.vm");
+        //templates.add("vm/js/api.js.vm");
+        templates.add("vm/react/ts/api.ts.vm");
+        if (GenConstants.TPL_CRUD.equals(tplCategory)) {
+            templates.add("vm/react/index.vue.vm");
+        } else if (GenConstants.TPL_TREE.equals(tplCategory)) {
+            //TODO
+            //templates.add("vm/vue/index-tree.vue.vm");
+        } else if (GenConstants.TPL_SUB.equals(tplCategory)) {
+            //TODO
+            //templates.add("vm/vue/index.vue.vm");
+            //templates.add("vm/java/sub-domain.java.vm");
+        }
+        return templates;
+    }
+
+    /**
      * 获取文件名
      */
     public static String getFileName(String template, GenTable genTable) {

@@ -316,6 +316,17 @@ public class GenTableServiceImpl implements GenTableService {
         return outputStream.toByteArray();
     }
 
+    @Override
+    public byte[] downloadCodeReact(String[] tableNames) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ZipOutputStream zip = new ZipOutputStream(outputStream);
+        for (String tableName : tableNames) {
+            generatorCodeReact(tableName, zip);
+        }
+        IOUtils.closeQuietly(zip);
+        return outputStream.toByteArray();
+    }
+
     /**
      * 查询表信息并生成代码
      */
@@ -333,6 +344,42 @@ public class GenTableServiceImpl implements GenTableService {
 
         // 获取模板列表
         List<String> templates = VelocityUtils.getTemplateList(table.getTplCategory());
+        for (String template : templates) {
+            // 渲染模板
+            StringWriter sw = new StringWriter();
+            Template tpl = Velocity.getTemplate(template, Constants.UTF8);
+            tpl.merge(context, sw);
+            try {
+                // 添加到zip
+                zip.putNextEntry(new ZipEntry(VelocityUtils.getFileName(template, table)));
+                IOUtils.write(sw.toString(), zip, Constants.UTF8);
+                IOUtils.closeQuietly(sw);
+                zip.flush();
+                zip.closeEntry();
+            } catch (IOException e) {
+                log.error("渲染模板失败，表名：" + table.getTableName(), e);
+            }
+        }
+    }
+
+
+    /**
+     * 查询表信息并生成代码
+     */
+    private void generatorCodeReact(String tableName, ZipOutputStream zip) {
+        // 查询表信息
+        GenTable table = genTableMapper.selectGenTableByName(tableName);
+        // 设置主子表信息
+        setSubTable(table);
+        // 设置主键列信息
+        setPkColumn(table);
+
+        VelocityInitializer.initVelocity();
+
+        VelocityContext context = VelocityUtils.prepareContext(table);
+
+        // 获取模板列表
+        List<String> templates = VelocityUtils.getTemplateListReact(table.getTplCategory());
         for (String template : templates) {
             // 渲染模板
             StringWriter sw = new StringWriter();

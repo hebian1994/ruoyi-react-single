@@ -114,6 +114,9 @@ public interface GenTableService
      */
     public byte[] downloadCode(String[] tableNames);
 
+    public byte[] downloadCodeReact(String[] tableNames);
+
+
     /**
      * 修改保存参数校验
      *

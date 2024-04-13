@@ -206,7 +206,7 @@ public class GenController extends BaseController {
     public void batchGenCodeReact(HttpServletResponse response, String tables) throws IOException {
         String[] tableNames = Convert.toStrArray(tables);
         //todo
-        byte[] data = genTableService.downloadCode(tableNames);
+        byte[] data = genTableService.downloadCodeReact(tableNames);
         genCode(response, data);
     }
 
