@@ -1,11 +1,9 @@
 package org.example.system.domain;
 
+import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.example.common.core.annotation.Excel;
-import org.example.common.core.constant.UserConstants;
 import org.example.common.core.web.domain.BaseEntity;
-
-import java.util.Date;
 
 /**
  * 系统访问记录表 sys_logininfor
@@ -31,6 +29,38 @@ public class SysLogininfor extends BaseEntity
     /** 地址 */
     @Excel(name = "地址")
     private String ipaddr;
+
+    public String getLoginLocation() {
+        return loginLocation;
+    }
+
+    public void setLoginLocation(String loginLocation) {
+        this.loginLocation = loginLocation;
+    }
+
+    @Excel(name = "地址")
+    private String loginLocation;
+
+    public String getBrowser() {
+        return browser;
+    }
+
+    public void setBrowser(String browser) {
+        this.browser = browser;
+    }
+
+    public String getOs() {
+        return os;
+    }
+
+    public void setOs(String os) {
+        this.os = os;
+    }
+
+    @Excel(name = "地址")
+    private String browser;
+    @Excel(name = "地址")
+    private String os;
 
     /** 描述 */
     @Excel(name = "描述")

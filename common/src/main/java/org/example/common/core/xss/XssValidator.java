@@ -1,10 +1,11 @@
-package com.ruoyi.common.core.xss;
+package org.example.common.core.xss;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import org.example.common.core.utils.StringUtils;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import com.ruoyi.common.core.utils.StringUtils;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 自定义xss校验注解实现

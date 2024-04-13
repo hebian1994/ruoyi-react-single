@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ruoyi.gen.mapper.GenTableColumnMapper">
+<mapper namespace="org.example.system.mapper.GenTableColumnMapper">
 
     <resultMap type="GenTableColumn" id="GenTableColumnResult">
         <id     property="columnId"       column="column_id"      />
@@ -116,7 +116,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             #{tableId}
         </foreach>
     </delete>
-    
+
     <delete id="deleteGenTableColumns">
         delete from gen_table_column where column_id in
         <foreach collection="list" item="item" open="(" separator="," close=")">

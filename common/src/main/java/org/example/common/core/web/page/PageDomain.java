@@ -1,6 +1,6 @@
-package com.ruoyi.common.core.web.page;
+package org.example.common.core.web.page;
 
-import com.ruoyi.common.core.utils.StringUtils;
+import org.example.common.core.utils.StringUtils;
 
 /**
  * 分页数据

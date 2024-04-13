@@ -1,17 +1,17 @@
-import type { FormInstance } from 'antd';
-import { Button, message, Modal } from 'antd';
-import React, { useRef, useEffect } from 'react';
-import { useIntl, FormattedMessage, useAccess } from '@umijs/max';
-import { getOnlineUserList, forceLogout } from '@/services/monitor/online';
-import { ActionType, ProColumns, ProTable } from '@ant-design/pro-components';
-import { DeleteOutlined } from '@ant-design/icons';
- 
+import type {FormInstance} from 'antd';
+import {Button, message, Modal} from 'antd';
+import React, {useRef, useEffect} from 'react';
+import {useIntl, FormattedMessage, useAccess} from '@umijs/max';
+import {getOnlineUserList, forceLogout} from '@/services/monitor/online';
+import {ActionType, ProColumns, ProTable} from '@ant-design/pro-components';
+import {DeleteOutlined} from '@ant-design/icons';
+
 
 /* *
  *
  * @author whiteshader@163.com
  * @datetime  2023/02/07
- * 
+ *
  * */
 
 
@@ -35,51 +35,52 @@ const OnlineUserTableList: React.FC = () => {
   const access = useAccess();
   const intl = useIntl();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+  }, []);
 
   const columns: ProColumns<API.Monitor.OnlineUserType>[] = [
     {
-      title: <FormattedMessage id="monitor.online.user.token_id" defaultMessage="会话编号" />,
+      title: <FormattedMessage id="monitor.online.user.token_id" defaultMessage="会话编号"/>,
       dataIndex: 'tokenId',
       valueType: 'text',
       hideInSearch: true,
     },
     {
-      title: <FormattedMessage id="monitor.online.user.user_name" defaultMessage="用户账号" />,
+      title: <FormattedMessage id="monitor.online.user.user_name" defaultMessage="用户账号"/>,
       dataIndex: 'userName',
       valueType: 'text',
     },
     {
-      title: <FormattedMessage id="monitor.online.user.dept_name" defaultMessage="部门名称" />,
+      title: <FormattedMessage id="monitor.online.user.dept_name" defaultMessage="部门名称"/>,
       dataIndex: 'deptName',
       valueType: 'text',
       hideInSearch: true,
     },
     {
-      title: <FormattedMessage id="monitor.online.user.ipaddr" defaultMessage="登录IP地址" />,
+      title: <FormattedMessage id="monitor.online.user.ipaddr" defaultMessage="登录IP地址"/>,
       dataIndex: 'ipaddr',
       valueType: 'text',
     },
     {
-      title: <FormattedMessage id="monitor.online.user.login_location" defaultMessage="登录地点" />,
+      title: <FormattedMessage id="monitor.online.user.login_location" defaultMessage="登录地点"/>,
       dataIndex: 'loginLocation',
       valueType: 'text',
       hideInSearch: true,
     },
     {
-      title: <FormattedMessage id="monitor.online.user.browser" defaultMessage="浏览器类型" />,
+      title: <FormattedMessage id="monitor.online.user.browser" defaultMessage="浏览器类型"/>,
       dataIndex: 'browser',
       valueType: 'text',
       hideInSearch: true,
     },
     {
-      title: <FormattedMessage id="monitor.online.user.os" defaultMessage="操作系统" />,
+      title: <FormattedMessage id="monitor.online.user.os" defaultMessage="操作系统"/>,
       dataIndex: 'os',
       valueType: 'text',
       hideInSearch: true,
     },
     {
-      title: <FormattedMessage id="monitor.online.user.login_time" defaultMessage="登录时间" />,
+      title: <FormattedMessage id="monitor.online.user.login_time" defaultMessage="登录时间"/>,
       dataIndex: 'loginTime',
       valueType: 'dateRange',
       render: (_, record) => <span>{record.loginTime}</span>,
@@ -94,7 +95,7 @@ const OnlineUserTableList: React.FC = () => {
       },
     },
     {
-      title: <FormattedMessage id="pages.searchTable.titleOption" defaultMessage="操作" />,
+      title: <FormattedMessage id="pages.searchTable.titleOption" defaultMessage="操作"/>,
       dataIndex: 'option',
       width: '60px',
       valueType: 'option',
@@ -130,32 +131,32 @@ const OnlineUserTableList: React.FC = () => {
   ];
 
   return (
-      <div style={{ width: '100%', float: 'right' }}>
-        <ProTable<API.Monitor.OnlineUserType>
-          headerTitle={intl.formatMessage({
-            id: 'pages.searchTable.title',
-            defaultMessage: '信息',
-          })}
-          actionRef={actionRef}
-          formRef={formTableRef}
-          rowKey="tokenId"
-          key="logininforList"
-          search={{
-            labelWidth: 120,
-          }}
-          request={(params) =>
-            getOnlineUserList({ ...params } as API.Monitor.OnlineUserListParams).then((res) => {
-              const result = {
-                data: res.rows,
-                total: res.total,
-                success: true,
-              };
-              return result;
-            })
-          }
-          columns={columns}
-        />
-      </div>
+    <div style={{width: '100%', float: 'right'}}>
+      <ProTable<API.Monitor.OnlineUserType>
+        headerTitle={intl.formatMessage({
+          id: 'pages.searchTable.title',
+          defaultMessage: '信息',
+        })}
+        actionRef={actionRef}
+        formRef={formTableRef}
+        rowKey="tokenId"
+        key="logininforList"
+        search={{
+          labelWidth: 120,
+        }}
+        request={(params) =>
+          getOnlineUserList({...params} as API.Monitor.OnlineUserListParams).then((res) => {
+            const result = {
+              data: res.rows,
+              total: res.total,
+              success: true,
+            };
+            return result;
+          })
+        }
+        columns={columns}
+      />
+    </div>
   );
 };
 

@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author ruoyi
  */
-public interface IGenTableColumnService
+public interface GenTableColumnService
 {
     /**
      * 查询业务字段列表

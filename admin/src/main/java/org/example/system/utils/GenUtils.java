@@ -1,16 +1,18 @@
-package com.ruoyi.gen.util;
+package org.example.system.utils;
+
+
+import org.apache.commons.lang3.RegExUtils;
+import org.example.common.core.constant.GenConstants;
+import org.example.common.core.utils.StringUtils;
+import org.example.config.GenConfig;
+import org.example.system.domain.GenTable;
+import org.example.system.domain.GenTableColumn;
 
 import java.util.Arrays;
-import org.apache.commons.lang3.RegExUtils;
-import com.ruoyi.common.core.constant.GenConstants;
-import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.gen.config.GenConfig;
-import com.ruoyi.gen.domain.GenTable;
-import com.ruoyi.gen.domain.GenTableColumn;
 
 /**
  * 代码生成器 工具类
- * 
+ *
  * @author ruoyi
  */
 public class GenUtils
@@ -132,7 +134,7 @@ public class GenUtils
 
     /**
      * 校验数组是否包含指定值
-     * 
+     *
      * @param arr 数组
      * @param targetValue 值
      * @return 是否包含
@@ -144,7 +146,7 @@ public class GenUtils
 
     /**
      * 获取模块名
-     * 
+     *
      * @param packageName 包名
      * @return 模块名
      */
@@ -157,7 +159,7 @@ public class GenUtils
 
     /**
      * 获取业务名
-     * 
+     *
      * @param tableName 表名
      * @return 业务名
      */
@@ -170,7 +172,7 @@ public class GenUtils
 
     /**
      * 表名转换成Java类名
-     * 
+     *
      * @param tableName 表名称
      * @return 类名
      */
@@ -188,7 +190,7 @@ public class GenUtils
 
     /**
      * 批量替换前缀
-     * 
+     *
      * @param replacementm 替换值
      * @param searchList 替换列表
      * @return
@@ -209,7 +211,7 @@ public class GenUtils
 
     /**
      * 关键字替换
-     * 
+     *
      * @param text 需要被替换的名字
      * @return 替换后的名字
      */
@@ -220,7 +222,7 @@ public class GenUtils
 
     /**
      * 获取数据库类型字段
-     * 
+     *
      * @param columnType 列类型
      * @return 截取后的列类型
      */
@@ -238,7 +240,7 @@ public class GenUtils
 
     /**
      * 获取字段长度
-     * 
+     *
      * @param columnType 列类型
      * @return 截取后的列类型
      */

@@ -1,10 +1,10 @@
-package com.ruoyi.common.core.exception.user;
+package org.example.common.core.exception.user;
 
-import com.ruoyi.common.core.exception.base.BaseException;
+import org.example.common.core.exception.base.BaseException;
 
 /**
  * 用户信息异常类
- * 
+ *
  * @author ruoyi
  */
 public class UserException extends BaseException

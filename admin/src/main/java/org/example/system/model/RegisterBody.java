@@ -1,4 +1,4 @@
-package org.example.system.domain;
+package org.example.system.model;
 
 /**
  * 用户注册对象

@@ -1,10 +1,10 @@
-package com.ruoyi.common.core.exception.auth;
+package org.example.common.core.exception.auth;
 
 import org.apache.commons.lang3.StringUtils;
 
 /**
  * 未能通过的角色认证异常
- * 
+ *
  * @author ruoyi
  */
 public class NotRoleException extends RuntimeException

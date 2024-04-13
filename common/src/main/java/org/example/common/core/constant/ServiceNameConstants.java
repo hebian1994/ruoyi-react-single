@@ -1,8 +1,8 @@
-package com.ruoyi.common.core.constant;
+package org.example.common.core.constant;
 
 /**
  * 服务名称
- * 
+ *
  * @author ruoyi
  */
 public class ServiceNameConstants

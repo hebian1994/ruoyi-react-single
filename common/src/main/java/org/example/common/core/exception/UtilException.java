@@ -1,8 +1,8 @@
-package com.ruoyi.common.core.exception;
+package org.example.common.core.exception;
 
 /**
  * 工具类异常
- * 
+ *
  * @author ruoyi
  */
 public class UtilException extends RuntimeException

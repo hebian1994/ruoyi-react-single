@@ -11,7 +11,7 @@ import java.util.Map;
  *
  * @author ruoyi
  */
-public interface IGenTableService
+public interface GenTableService
 {
     /**
      * 查询业务列表

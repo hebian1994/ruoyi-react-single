@@ -1,18 +1,19 @@
-package com.ruoyi.common.core.web.controller;
+package org.example.common.core.web.controller;
 
-import java.beans.PropertyEditorSupport;
-import java.util.Date;
-import java.util.List;
+import com.github.pagehelper.PageInfo;
+import org.example.common.core.constant.HttpStatus;
+import org.example.common.core.utils.DateUtils;
+import org.example.common.core.utils.PageUtils;
+import org.example.common.core.web.domain.AjaxResult;
+import org.example.common.core.web.page.TableDataInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
-import com.github.pagehelper.PageInfo;
-import com.ruoyi.common.core.constant.HttpStatus;
-import com.ruoyi.common.core.utils.DateUtils;
-import com.ruoyi.common.core.utils.PageUtils;
-import com.ruoyi.common.core.web.domain.AjaxResult;
-import com.ruoyi.common.core.web.page.TableDataInfo;
+
+import java.beans.PropertyEditorSupport;
+import java.util.Date;
+import java.util.List;
 
 /**
  * web层通用数据处理

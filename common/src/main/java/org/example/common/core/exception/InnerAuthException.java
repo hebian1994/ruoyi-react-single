@@ -1,8 +1,8 @@
-package com.ruoyi.common.core.exception;
+package org.example.common.core.exception;
 
 /**
  * 内部认证异常
- * 
+ *
  * @author ruoyi
  */
 public class InnerAuthException extends RuntimeException

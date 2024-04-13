@@ -1,15 +1,11 @@
 package org.example.common.filter;
 
 import java.io.IOException;
-import jakarta.servlet.Filter;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.FilterConfig;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
-import jakarta.servlet.http.HttpServletRequest;
+
+import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.MediaType;
-import com.ruoyi.common.utils.StringUtils;
+import org.example.common.core.utils.StringUtils;
 
 /**
  * Repeatable 过滤器

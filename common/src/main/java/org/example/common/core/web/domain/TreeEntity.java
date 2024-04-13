@@ -1,11 +1,11 @@
-package com.ruoyi.common.core.web.domain;
+package org.example.common.core.web.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Tree基类
- * 
+ *
  * @author ruoyi
  */
 public class TreeEntity extends BaseEntity

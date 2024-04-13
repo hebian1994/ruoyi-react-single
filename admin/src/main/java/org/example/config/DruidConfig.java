@@ -1,4 +1,4 @@
-package org.example.admin.security.config;
+package org.example.config;
 
 import java.io.IOException;
 import java.util.HashMap;

@@ -1,15 +1,14 @@
 package org.example.system.service;
 
-import org.example.common.constant.Constants;
+import org.example.common.core.constant.Constants;
 import org.example.common.core.constant.CacheConstants;
-import org.example.common.core.constant.SecurityConstants;
 import org.example.common.core.constant.UserConstants;
 import org.example.common.core.domain.R;
+import org.example.common.core.exception.ServiceException;
 import org.example.common.core.text.Convert;
 import org.example.common.core.utils.StringUtils;
 import org.example.common.core.utils.ip.IpUtils;
 import org.example.common.enums.UserStatus;
-import org.example.common.exception.ServiceException;
 import org.example.common.redis.service.RedisService;
 import org.example.system.domain.SysUser;
 import org.example.system.model.LoginUser;

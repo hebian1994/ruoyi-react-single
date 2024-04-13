@@ -1,6 +1,6 @@
-package org.example.admin.security.config;
+package org.example.config;
 
-import org.example.admin.security.config.interceptor.HeaderInterceptor;
+import org.example.interceptor.HeaderInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;

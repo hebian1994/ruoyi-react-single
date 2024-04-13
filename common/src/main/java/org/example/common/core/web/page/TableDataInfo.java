@@ -1,11 +1,11 @@
-package com.ruoyi.common.core.web.page;
+package org.example.common.core.web.page;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * 表格分页数据对象
- * 
+ *
  * @author ruoyi
  */
 public class TableDataInfo implements Serializable
@@ -33,7 +33,7 @@ public class TableDataInfo implements Serializable
 
     /**
      * 分页
-     * 
+     *
      * @param list 列表数据
      * @param total 总记录数
      */

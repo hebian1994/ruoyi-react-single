@@ -1,8 +1,8 @@
-package com.ruoyi.common.core.utils.sign;
+package org.example.common.core.utils.sign;
 
 /**
  * Base64工具类
- * 
+ *
  * @author ruoyi
  */
 public final class Base64

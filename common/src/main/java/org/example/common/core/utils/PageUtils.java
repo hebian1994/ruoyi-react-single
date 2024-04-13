@@ -1,13 +1,13 @@
-package com.ruoyi.common.core.utils;
+package org.example.common.core.utils;
 
 import com.github.pagehelper.PageHelper;
-import com.ruoyi.common.core.utils.sql.SqlUtil;
-import com.ruoyi.common.core.web.page.PageDomain;
-import com.ruoyi.common.core.web.page.TableSupport;
+import org.example.common.core.utils.sql.SqlUtil;
+import org.example.common.core.web.page.PageDomain;
+import org.example.common.core.web.page.TableSupport;
 
 /**
  * 分页工具类
- * 
+ *
  * @author ruoyi
  */
 public class PageUtils extends PageHelper

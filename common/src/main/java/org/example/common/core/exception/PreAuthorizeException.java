@@ -1,8 +1,8 @@
-package com.ruoyi.common.core.exception;
+package org.example.common.core.exception;
 
 /**
  * 权限异常
- * 
+ *
  * @author ruoyi
  */
 public class PreAuthorizeException extends RuntimeException

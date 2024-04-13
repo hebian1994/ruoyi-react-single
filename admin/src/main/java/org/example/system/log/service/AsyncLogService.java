@@ -1,7 +1,6 @@
 package org.example.system.log.service;
 
 import org.example.system.domain.SysOperLog;
-import org.example.common.core.constant.SecurityConstants;
 
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;

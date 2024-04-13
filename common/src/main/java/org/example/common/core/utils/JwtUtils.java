@@ -1,12 +1,13 @@
-package com.ruoyi.common.core.utils;
+package org.example.common.core.utils;
 
-import java.util.Map;
-import com.ruoyi.common.core.constant.SecurityConstants;
-import com.ruoyi.common.core.constant.TokenConstants;
-import com.ruoyi.common.core.text.Convert;
+import org.example.common.core.constant.SecurityConstants;
+import org.example.common.core.constant.TokenConstants;
+import org.example.common.core.text.Convert;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+
+import java.util.Map;
 
 /**
  * Jwt工具类
@@ -42,7 +43,7 @@ public class JwtUtils
 
     /**
      * 根据令牌获取用户标识
-     * 
+     *
      * @param token 令牌
      * @return 用户ID
      */
@@ -54,7 +55,7 @@ public class JwtUtils
 
     /**
      * 根据令牌获取用户标识
-     * 
+     *
      * @param claims 身份信息
      * @return 用户ID
      */
@@ -65,7 +66,7 @@ public class JwtUtils
 
     /**
      * 根据令牌获取用户ID
-     * 
+     *
      * @param token 令牌
      * @return 用户ID
      */
@@ -77,7 +78,7 @@ public class JwtUtils
 
     /**
      * 根据身份信息获取用户ID
-     * 
+     *
      * @param claims 身份信息
      * @return 用户ID
      */
@@ -88,7 +89,7 @@ public class JwtUtils
 
     /**
      * 根据令牌获取用户名
-     * 
+     *
      * @param token 令牌
      * @return 用户名
      */
@@ -100,7 +101,7 @@ public class JwtUtils
 
     /**
      * 根据身份信息获取用户名
-     * 
+     *
      * @param claims 身份信息
      * @return 用户名
      */
@@ -111,7 +112,7 @@ public class JwtUtils
 
     /**
      * 根据身份信息获取键值
-     * 
+     *
      * @param claims 身份信息
      * @param key 键
      * @return 值

@@ -1,7 +1,8 @@
-package com.ruoyi.common.core.domain;
+package org.example.common.core.domain;
+
+import org.example.common.core.constant.Constants;
 
 import java.io.Serializable;
-import com.ruoyi.common.core.constant.Constants;
 
 /**
  * 响应信息主体

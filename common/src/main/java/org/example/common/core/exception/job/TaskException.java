@@ -1,8 +1,8 @@
-package com.ruoyi.common.core.exception.job;
+package org.example.common.core.exception.job;
 
 /**
  * 计划策略异常
- * 
+ *
  * @author ruoyi
  */
 public class TaskException extends Exception

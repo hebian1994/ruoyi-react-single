@@ -1,4 +1,4 @@
-package com.ruoyi.common.core.annotation;
+package org.example.common.core.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * Excel注解集
- * 
+ *
  * @author ruoyi
  */
 @Target(ElementType.FIELD)

@@ -1,11 +1,11 @@
 package org.example.system.service;
 
 
-import org.example.common.constant.Constants;
-import org.example.common.core.constant.SecurityConstants;
+import org.example.common.core.constant.Constants;
 import org.example.common.core.utils.StringUtils;
 import org.example.common.core.utils.ip.IpUtils;
 import org.example.system.domain.SysLogininfor;
+import org.example.system.mapper.SysLogininforMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SysRecordLogService {
     @Autowired
-    private SysRecordLogService recordLogService;
+    private SysLogininforMapper sysLogininforMapper;
 
     /**
      * 记录登录信息
@@ -38,6 +38,6 @@ public class SysRecordLogService {
         } else if (Constants.LOGIN_FAIL.equals(status)) {
             logininfor.setStatus(Constants.LOGIN_FAIL_STATUS);
         }
-        recordLogService.recordLogininfor(logininfor.getUserName(), logininfor.getStatus(), logininfor.getMsg());
+        sysLogininforMapper.insertLogininfor(logininfor);
     }
 }

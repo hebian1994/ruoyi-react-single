@@ -1,4 +1,4 @@
-package org.example.admin.security.config;
+package org.example.config;
 
 import de.codecentric.boot.admin.server.config.AdminServerProperties;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package org.example.admin.security.config.interceptor;
+package org.example.interceptor;
 
 import org.example.system.model.LoginUser;
 import org.example.common.core.constant.SecurityConstants;
@@ -29,8 +29,12 @@ public class HeaderInterceptor implements AsyncHandlerInterceptor
             return true;
         }
 
-        SecurityContextHolder.setUserId(ServletUtils.getHeader(request, SecurityConstants.DETAILS_USER_ID));
-        SecurityContextHolder.setUserName(ServletUtils.getHeader(request, SecurityConstants.DETAILS_USERNAME));
+        //SecurityContextHolder.setUserId(ServletUtils.getHeader(request, SecurityConstants.DETAILS_USER_ID));
+        //SecurityContextHolder.setUserName(ServletUtils.getHeader(request, SecurityConstants.DETAILS_USERNAME));
+        //SecurityContextHolder.setUserKey(ServletUtils.getHeader(request, SecurityConstants.USER_KEY));
+
+        SecurityContextHolder.setUserId("1");
+        SecurityContextHolder.setUserName("admin");
         SecurityContextHolder.setUserKey(ServletUtils.getHeader(request, SecurityConstants.USER_KEY));
 
         String token = SecurityUtils.getToken();

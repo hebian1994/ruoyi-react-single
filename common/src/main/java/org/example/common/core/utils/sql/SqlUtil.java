@@ -1,11 +1,11 @@
-package com.ruoyi.common.core.utils.sql;
+package org.example.common.core.utils.sql;
 
-import com.ruoyi.common.core.exception.UtilException;
-import com.ruoyi.common.core.utils.StringUtils;
+import org.example.common.core.exception.UtilException;
+import org.example.common.core.utils.StringUtils;
 
 /**
  * sql操作工具类
- * 
+ *
  * @author ruoyi
  */
 public class SqlUtil

@@ -34,8 +34,9 @@ server:
 # 日志配置
 logging:
   level:
-    com.ruoyi: debug
+    org.org.example: debug
     org.springframework: warn
+    root: debug
 
 # 用户配置
 user:
@@ -100,7 +101,7 @@ token:
 # MyBatis配置
 mybatis:
   # 搜索指定包别名
-  typeAliasesPackage: com.ruoyi.**.domain
+  typeAliasesPackage: org.example.**.domain
   # 配置mapper的扫描，找到所有的mapper.xml映射文件
   mapperLocations: classpath*:mapper/**/*Mapper.xml
   # 加载全局的配置文件
@@ -127,3 +128,7 @@ xss:
   excludes: /system/notice
   # 匹配链接
   urlPatterns: /system/*,/monitor/*,/tool/*
+file:
+  prefix: test
+  domain: localhost
+  path: D:\test

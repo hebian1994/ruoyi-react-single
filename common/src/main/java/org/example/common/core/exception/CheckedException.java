@@ -1,8 +1,8 @@
-package com.ruoyi.common.core.exception;
+package org.example.common.core.exception;
 
 /**
  * 检查异常
- * 
+ *
  * @author ruoyi
  */
 public class CheckedException extends RuntimeException

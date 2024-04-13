@@ -1,13 +1,13 @@
-package com.ruoyi.common.core.utils.bean;
+package org.example.common.core.utils.bean;
 
-import java.util.Set;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
+import java.util.Set;
 
 /**
  * bean对象属性验证
- * 
+ *
  * @author ruoyi
  */
 public class BeanValidators

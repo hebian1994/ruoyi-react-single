@@ -1,9 +1,10 @@
-package com.ruoyi.common.core.web.domain;
+package org.example.common.core.web.domain;
+
+import org.example.common.core.constant.HttpStatus;
+import org.example.common.core.utils.StringUtils;
 
 import java.util.HashMap;
 import java.util.Objects;
-import com.ruoyi.common.core.constant.HttpStatus;
-import com.ruoyi.common.core.utils.StringUtils;
 
 /**
  * 操作消息提醒

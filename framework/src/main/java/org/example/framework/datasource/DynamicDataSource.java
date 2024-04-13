@@ -2,7 +2,7 @@ package org.example.framework.datasource;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
-import jakarta.sql.DataSource;
+import javax.sql.DataSource;
 import java.util.Map;
 
 /**
@@ -10,18 +10,15 @@ import java.util.Map;
  *
  * @author ruoyi
  */
-public class DynamicDataSource extends AbstractRoutingDataSource
-{
-    public DynamicDataSource(DataSource defaultTargetDataSource, Map<Object, Object> targetDataSources)
-    {
+public class DynamicDataSource extends AbstractRoutingDataSource {
+    public DynamicDataSource(DataSource defaultTargetDataSource, Map<Object, Object> targetDataSources) {
         super.setDefaultTargetDataSource(defaultTargetDataSource);
         super.setTargetDataSources(targetDataSources);
         super.afterPropertiesSet();
     }
 
     @Override
-    protected Object determineCurrentLookupKey()
-    {
+    protected Object determineCurrentLookupKey() {
         return DynamicDataSourceContextHolder.getDataSourceType();
     }
 }

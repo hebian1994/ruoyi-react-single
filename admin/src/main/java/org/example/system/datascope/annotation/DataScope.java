@@ -1,4 +1,4 @@
-package org.example.datascope.annotation;
+package org.example.system.datascope.annotation;
 
 import java.lang.annotation.*;
 

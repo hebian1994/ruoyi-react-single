@@ -1,5 +1,9 @@
-package org.example.admin;
+package org.example;
 
+import org.apache.ibatis.session.Configuration;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.Map;
 
 /**
@@ -18,6 +23,7 @@ import java.util.Map;
  * @author ruoyi
  */
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+@MapperScan(basePackages = "org.example.system.mapper")
 public class RuoYiApplication {
 
     @Autowired
@@ -25,6 +31,10 @@ public class RuoYiApplication {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    SqlSessionFactory sqlSessionFactory;
+
 
     @PostConstruct
     void init() throws SQLException {
@@ -36,6 +46,13 @@ public class RuoYiApplication {
         for (Map.Entry<String, Object> stringObjectEntry : stringObjectMap.entrySet()) {
             System.out.println(stringObjectEntry.getKey());
             System.out.println(stringObjectEntry.getValue());
+        }
+
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        Configuration configuration = sqlSession.getConfiguration();
+        Collection<String> mappedStatementNames = configuration.getMappedStatementNames();
+        for (String mappedStatementName : mappedStatementNames) {
+            System.out.println("--MAPPER" + mappedStatementName);
         }
     }
 

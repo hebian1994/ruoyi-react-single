@@ -1,8 +1,8 @@
-package com.ruoyi.common.core.constant;
+package org.example.common.core.constant;
 
 /**
  * 权限相关通用常量
- * 
+ *
  * @author ruoyi
  */
 public class SecurityConstants

@@ -1,8 +1,8 @@
-package com.ruoyi.common.core.utils.file;
+package org.example.common.core.utils.file;
 
 /**
  * 媒体类型工具类
- * 
+ *
  * @author ruoyi
  */
 public class MimeTypeUtils

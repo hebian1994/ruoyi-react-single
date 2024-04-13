@@ -1,10 +1,10 @@
-package com.ruoyi.common.core.exception.file;
+package org.example.common.core.exception.file;
 
-import com.ruoyi.common.core.exception.base.BaseException;
+import org.example.common.core.exception.base.BaseException;
 
 /**
  * 文件信息异常类
- * 
+ *
  * @author ruoyi
  */
 public class FileException extends BaseException

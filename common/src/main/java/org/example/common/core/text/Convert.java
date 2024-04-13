@@ -7,7 +7,7 @@ import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.text.NumberFormat;
 import java.util.Set;
-import com.ruoyi.common.utils.StringUtils;
+import org.example.common.core.utils.StringUtils;
 import org.apache.commons.lang3.ArrayUtils;
 
 /**

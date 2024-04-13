@@ -1,55 +1,54 @@
-package com.ruoyi.system.controller;
+package org.example.controller;
+
+import org.example.common.core.domain.R;
+import org.example.common.core.utils.StringUtils;
+import org.example.common.core.utils.file.FileTypeUtils;
+import org.example.common.core.utils.file.FileUtils;
+import org.example.common.core.utils.file.MimeTypeUtils;
+import org.example.system.domain.SysFile;
+import org.example.system.domain.SysUser;
+import org.example.system.model.LoginUser;
+import org.example.system.service.ISysFileService;
+import org.example.system.service.SysUserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.example.common.core.web.controller.BaseController;
+import org.example.common.core.web.domain.AjaxResult;
+import org.example.common.core.web.page.TableDataInfo;
+import org.example.system.log.annotation.Log;
+import org.example.system.log.enums.BusinessType;
+import org.example.system.security.annotation.RequiresPermissions;
+import org.example.system.security.utils.SecurityUtils;
 
 import java.util.Arrays;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-import com.ruoyi.common.core.domain.R;
-import com.ruoyi.common.core.utils.StringUtils;
-import com.ruoyi.common.core.utils.file.FileTypeUtils;
-import com.ruoyi.common.core.utils.file.MimeTypeUtils;
-import com.ruoyi.common.core.web.controller.BaseController;
-import com.ruoyi.common.core.web.domain.AjaxResult;
-import com.ruoyi.common.log.annotation.Log;
-import com.ruoyi.common.log.enums.BusinessType;
-import com.ruoyi.common.security.service.TokenService;
-import com.ruoyi.common.security.utils.SecurityUtils;
-import com.ruoyi.system.api.RemoteFileService;
-import com.ruoyi.system.api.domain.SysFile;
-import com.ruoyi.system.api.domain.SysUser;
-import com.ruoyi.system.api.model.LoginUser;
-import com.ruoyi.system.service.ISysUserService;
 
 /**
  * 个人信息 业务处理
- * 
+ *
  * @author ruoyi
  */
 @RestController
-@RequestMapping("/user/profile")
-public class SysProfileController extends BaseController
-{
+@RequestMapping("/system/user/profile")
+public class SysProfileController extends BaseController {
     @Autowired
-    private ISysUserService userService;
-    
+    private SysUserService userService;
+
     @Autowired
-    private TokenService tokenService;
-    
+    private org.example.system.security.service.TokenService tokenService;
+
     @Autowired
-    private RemoteFileService remoteFileService;
+    private ISysFileService sysFileService;
 
     /**
      * 个人信息
      */
     @GetMapping
-    public AjaxResult profile()
-    {
+    public AjaxResult profile() {
         String username = SecurityUtils.getUsername();
         SysUser user = userService.selectUserByUserName(username);
         AjaxResult ajax = AjaxResult.success(user);
@@ -63,25 +62,20 @@ public class SysProfileController extends BaseController
      */
     @Log(title = "个人信息", businessType = BusinessType.UPDATE)
     @PutMapping
-    public AjaxResult updateProfile(@RequestBody SysUser user)
-    {
+    public AjaxResult updateProfile(@RequestBody SysUser user) {
         LoginUser loginUser = SecurityUtils.getLoginUser();
         SysUser sysUser = loginUser.getSysUser();
         user.setUserName(sysUser.getUserName());
-        if (StringUtils.isNotEmpty(user.getPhonenumber()) && !userService.checkPhoneUnique(user))
-        {
+        if (StringUtils.isNotEmpty(user.getPhonenumber()) && !userService.checkPhoneUnique(user)) {
             return error("修改用户'" + user.getUserName() + "'失败，手机号码已存在");
-        }
-        else if (StringUtils.isNotEmpty(user.getEmail()) && !userService.checkEmailUnique(user))
-        {
+        } else if (StringUtils.isNotEmpty(user.getEmail()) && !userService.checkEmailUnique(user)) {
             return error("修改用户'" + user.getUserName() + "'失败，邮箱账号已存在");
         }
         user.setUserId(sysUser.getUserId());
         user.setPassword(null);
         user.setAvatar(null);
         user.setDeptId(null);
-        if (userService.updateUserProfile(user) > 0)
-        {
+        if (userService.updateUserProfile(user) > 0) {
             // 更新缓存用户信息
             loginUser.getSysUser().setNickName(user.getNickName());
             loginUser.getSysUser().setPhonenumber(user.getPhonenumber());
@@ -98,21 +92,17 @@ public class SysProfileController extends BaseController
      */
     @Log(title = "个人信息", businessType = BusinessType.UPDATE)
     @PutMapping("/updatePwd")
-    public AjaxResult updatePwd(String oldPassword, String newPassword)
-    {
+    public AjaxResult updatePwd(String oldPassword, String newPassword) {
         String username = SecurityUtils.getUsername();
         SysUser user = userService.selectUserByUserName(username);
         String password = user.getPassword();
-        if (!SecurityUtils.matchesPassword(oldPassword, password))
-        {
+        if (!SecurityUtils.matchesPassword(oldPassword, password)) {
             return error("修改密码失败，旧密码错误");
         }
-        if (SecurityUtils.matchesPassword(newPassword, password))
-        {
+        if (SecurityUtils.matchesPassword(newPassword, password)) {
             return error("新密码不能与旧密码相同");
         }
-        if (userService.resetUserPwd(username, SecurityUtils.encryptPassword(newPassword)) > 0)
-        {
+        if (userService.resetUserPwd(username, SecurityUtils.encryptPassword(newPassword)) > 0) {
             // 更新缓存用户密码
             LoginUser loginUser = SecurityUtils.getLoginUser();
             loginUser.getSysUser().setPassword(SecurityUtils.encryptPassword(newPassword));
@@ -121,30 +111,39 @@ public class SysProfileController extends BaseController
         }
         return error("修改密码异常，请联系管理员");
     }
-    
+
     /**
      * 头像上传
      */
     @Log(title = "用户头像", businessType = BusinessType.UPDATE)
     @PostMapping("/avatar")
-    public AjaxResult avatar(@RequestParam("avatarfile") MultipartFile file)
-    {
-        if (!file.isEmpty())
-        {
+    public AjaxResult avatar(@RequestParam("avatarfile") MultipartFile file) {
+        if (!file.isEmpty()) {
             LoginUser loginUser = SecurityUtils.getLoginUser();
             String extension = FileTypeUtils.getExtension(file);
-            if (!StringUtils.equalsAnyIgnoreCase(extension, MimeTypeUtils.IMAGE_EXTENSION))
-            {
+            if (!StringUtils.equalsAnyIgnoreCase(extension, MimeTypeUtils.IMAGE_EXTENSION)) {
                 return error("文件格式不正确，请上传" + Arrays.toString(MimeTypeUtils.IMAGE_EXTENSION) + "格式");
             }
-            R<SysFile> fileResult = remoteFileService.upload(file);
-            if (StringUtils.isNull(fileResult) || StringUtils.isNull(fileResult.getData()))
-            {
+            R<SysFile> fileResult;
+
+
+            try {
+                // 上传并返回访问地址
+                String url = sysFileService.uploadFile(file);
+                SysFile sysFile = new SysFile();
+                sysFile.setName(FileUtils.getName(url));
+                sysFile.setUrl(url);
+                fileResult = R.ok(sysFile);
+            } catch (Exception e) {
+                fileResult = R.fail(e.getMessage());
+            }
+
+
+            if (StringUtils.isNull(fileResult) || StringUtils.isNull(fileResult.getData())) {
                 return error("文件服务异常，请联系管理员");
             }
             String url = fileResult.getData().getUrl();
-            if (userService.updateUserAvatar(loginUser.getUsername(), url))
-            {
+            if (userService.updateUserAvatar(loginUser.getUsername(), url)) {
                 AjaxResult ajax = AjaxResult.success();
                 ajax.put("imgUrl", url);
                 // 更新缓存用户头像

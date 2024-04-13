@@ -1,14 +1,15 @@
-package com.ruoyi.common.core.context;
+package org.example.common.core.context;
+
+import com.alibaba.ttl.TransmittableThreadLocal;
+import org.example.common.core.constant.SecurityConstants;
+import org.example.common.core.text.Convert;
+import org.example.common.core.utils.StringUtils;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import com.alibaba.ttl.TransmittableThreadLocal;
-import com.ruoyi.common.core.constant.SecurityConstants;
-import com.ruoyi.common.core.text.Convert;
-import com.ruoyi.common.core.utils.StringUtils;
 
 /**
- * 获取当前线程变量中的 用户id、用户名称、Token等信息 
+ * 获取当前线程变量中的 用户id、用户名称、Token等信息
  * 注意： 必须在网关通过请求头的方法传入，同时在HeaderInterceptor拦截器设置值。 否则这里无法获取
  *
  * @author ruoyi

@@ -1,7 +1,6 @@
 package org.example.system.domain;
 import org.example.common.core.annotation.Excel;
 import org.example.common.core.annotation.Excels;
-import org.example.common.core.constant.UserConstants;
 import org.example.common.core.web.domain.BaseEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
